@@ -81,7 +81,7 @@ async function addExpense() {
   };
 
   try {
-    const response = await fetch("https://financial-dashboard-y0nx.onrender.com", {
+    const response = await fetch("https://financial-dashboard-y0nx.onrender.com/api/expenses", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(expense),
