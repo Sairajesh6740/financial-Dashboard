@@ -19,7 +19,7 @@ const firebaseConfig = {
   if (!user) return;
 
   try {
-    const res = await fetch(`http://localhost:3000/api/expenses?userId=${user.uid}`);
+    const res = await fetch(`https://financial-dashboard-y0nx.onrender.com/api/expenses?userId=${userId}`);
     const data = await res.json();
     expenses = data;
     console.log("📦 MongoDB Expenses Fetched →", expenses);
