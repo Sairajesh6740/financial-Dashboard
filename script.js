@@ -542,6 +542,10 @@ async function addExpenseToDB(expense) {
   });
 }
 
+const BASE_API_URL = "https://financial-dashboard-y0nx.onrender.com";
+
+// Example:
+await fetch(`${BASE_API_URL}/api/expenses?userId=${user.uid}`);
 
 
 
