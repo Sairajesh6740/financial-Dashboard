@@ -6,7 +6,7 @@ import { OpenAI } from "openai";
 
 const app = express();
 app.use(cors({
-  origin: "https://your-frontend.vercel.app", // ✅ your Vercel domain
+  origin: "https://financial-dashboard-six-iota.vercel.app", // ✅ your Vercel domain
   credentials: true
 }));
 app.use(express.json());
