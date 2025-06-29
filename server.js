@@ -9,14 +9,16 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/financialDashboard", {
+mongoose.connect("mongodb+srv://rajesh:rajesh%40123@expenses.fgkd1jt.mongodb.net/expensesDB?retryWrites=true&w=majority&appName=expenses", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
-  console.log("✅ Connected to local MongoDB");
+  console.log("✅ Connected to MongoDB Atlas");
 }).catch((err) => {
   console.error("❌ MongoDB connection error:", err);
 });
+
+
 
 // ✅ Expense Schema
 const expenseSchema = new mongoose.Schema({
