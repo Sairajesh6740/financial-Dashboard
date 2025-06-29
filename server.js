@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/financialDashboard", {
+mongoose.connect("mongodb+srv://<username>:<password>@cluster0.mongodb.net/financialDashboard", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
