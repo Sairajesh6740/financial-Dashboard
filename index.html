@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Personal Finance Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+ <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="spinner"></div>
+  </div>
+  <div class="header-center">
+  <h1 class="animated-text">The Smart Financial Dashboard</h1>
+</div>
+  <!-- Font Awesome CDN for wallet icon -->
+<div class="floating-wallet"  class="glow-button" title="Wallet">
+  <i class="fas fa-wallet icon-animate"></i>
+</div>
+<div id="topRightControls">
+  <button onclick="toggleDarkMode()" id="darkModeBtn">🌓</button>
+  <button onclick="logout()" class="glow-button" id="logoutBtn">🚪 Logout</button>
+</div>
+
+
+
+<div class="top-controls">
+  <div id="welcome" class="animated-welcome-text" ><span id="username">User</span>!</div>
+</div>
+
+</div>
+
+  <h2>💰 Balance: <span id="balance">₹0</span></h2>
+  <div id="summary">Expenses: ₹0 | Transactions: 0</div>
+  <div id="dailyInsight" style="margin-top: 20px; font-size: 1.1rem; font-style: italic;"></div>
+
+
+  <input type="number" id="expenseInput" placeholder="Enter amount" />
+  <select id="categoryInput">
+    <option value="Food">🍔 Food</option>
+    <option value="Travel">✈️ Travel</option>
+    <option value="Bills">📟 Bills</option>
+    <option value="Shopping">💼 Shopping</option>
+    <option value="Entertainment">🎉 Entertainment</option>
+    <option value="Health">🏥 Health</option>
+    <option value="Education">📚 Education</option>
+    <option value="Utilities">💡 Utilities</option>
+    <option value="Transport">🚗 Transport</option> 
+    <option value="Groceries">🛒 Groceries</option>
+    <option value="Dining">🍽️ Dining</option>
+    <option value="Gifts">🎁 Gifts</option>
+    <option value="Subscriptions">📅 Subscriptions</option>
+    <option value="Investments">📈 Investments</option>      
+    <option value="Other">📦 Other</option>
+  </select>
+  <input type="date" id="dateInput" />
+  <button class="glow-button" onclick="addExpense()">Add Expense</button>
+  <button onclick="clearForm()">Clear</button>
+  <button onclick="exportCSV()">📁 Export CSV</button>
+
+ 
+  <button onclick="generateAndShowDailyInsight()">📊 Generate Daily Insight</button><div id="dailyInsight" class="insight-box" style="margin-top: 30px;">
+  <h3>🧠 Smart Financial Insight</h3>
+  <p id="dailyInsightText" style="font-size: 1.1rem; font-family: 'Poppins'; color: #2c3e50;"></p>
+</div>
+
+
+
+  <div class="income-input">
+    <label>💼 Enter Income:</label>
+    <input type="number" id="incomeInput" placeholder="Set Income" />
+    <button onclick="setIncome()">Set</button>
+  </div>
+
+  <br><br>
+  <label>🔍 Filter by Category:</label>
+  <select id="filterCategory" onchange="filterExpenses()">
+    <option value="All">All</option>
+    <option value="Food">Food</option>
+    <option value="Travel">Travel</option>
+    <option value="Bills">Bills</option>
+    <option value="Shopping">Shopping</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <div id="expensesList"></div>
+
+  <canvas id="expenseChart" width="400" height="200"></canvas>
+
+  <h3>📅 Monthly Breakdown</h3>
+  <select id="monthSelector" onchange="updateMonthlyChart()">
+    <option value="All">All Months</option>
+  </select>
+  <canvas id="monthlyChart" width="400" height="200"></canvas>
+
+  <div id="goalSection" class="fade-in">
+    <h3>🎯 Savings Goal</h3>
+    <input type="number" id="goalInput" placeholder="Enter your savings goal (₹)" />
+    <button onclick="setGoal()">Set Goal</button>
+    <button onclick="resetDashboard()" class="glow-button" style="background-color:red; color:white; margin-top: 20px;">🔄 Reset Dashboard</button>
+
+    <div id="goalStatus"></div>
+    <div class="progress-bar">
+      <div class="progress" id="progressBar" style="width: 0%">0%</div>
+    </div>
+  </div>
+  <!-- Only Firebase v9 Compat (keep same version) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+<!-- Chart.js (Only once) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Your script (keep as module) -->
+<script src= "script.js"></script>
+
+
+</body>
+</html>

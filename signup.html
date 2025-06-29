@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up | Personal Finance Dashboard</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .signup-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+    }
+    button {
+      padding: 10px;
+      width: 100%;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 10px;
+      color: red;
+    }
+    a {
+      display: block;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-box">
+    <h2>Sign Up</h2>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password (min 6 chars)" />
+    <button onclick="signup()">Create Account</button>
+    <div class="message" id="message"></div>
+    <a href="login.html">Already have an account? Login</a>
+  </div>
+
+  <script>
+   const firebaseConfig = {
+  apiKey: "AIzaSyDH06GmuMFz-ZNYWTwgnPAcodz6-_zDDIA",
+  authDomain: "financialdashboardanalysis.firebaseapp.com",
+  projectId: "financialdashboardanalysis",
+  storageBucket: "financialdashboardanalysis.firebasestorage.app",
+  messagingSenderId: "433992335630",
+  appId: "1:433992335630:web:8362255f9acd44b740175f"
+};
+    firebase.initializeApp(firebaseConfig);
+
+    function signup() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("Signup successful! Redirecting...");
+          window.location.href = "index.html";
+        })
+        .catch(error => {
+          document.getElementById('message').textContent = error.message;
+        });
+    }
+  </script>
+
+</body>
+</html>

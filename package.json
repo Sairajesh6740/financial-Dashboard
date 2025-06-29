@@ -1,0 +1,22 @@
+{
+  "name": "financial-dashboard",
+  "version": "1.0.0",
+  "main": "expenseSummary.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "axios": "^1.10.0",
+    "dotenv": "^16.5.0",
+    "nodemailer": "^7.0.3",
+    "openai": "^5.3.0",
+    "type": "module"
+  }
+}
+

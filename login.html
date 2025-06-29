@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Personal Finance Dashboard</title>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+      width: 330px;
+      animation: slideIn 1s ease forwards;
+      opacity: 0;
+    }
+
+    input {
+      display: block;
+      margin: 12px 0;
+      padding: 12px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #2196f3;
+      box-shadow: 0 0 8px rgba(33, 150, 243, 0.4);
+    }
+
+    button {
+      padding: 12px;
+      width: 100%;
+      margin-top: 8px;
+      background: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1565c0;
+      transform: scale(1.03);
+    }
+
+    .google {
+      background: #db4437;
+    }
+
+    .google:hover {
+      background: #c23321;
+    }
+
+    .otp-btn {
+      background: #2e7d32;
+    }
+
+    .otp-btn:hover {
+      background: #1b5e20;
+    }
+
+    .message {
+      margin-top: 10px;
+      color: red;
+      text-align: center;
+    }
+
+    a {
+      display: block;
+      margin-top: 10px;
+      text-align: center;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes slideIn {
+      0% {
+        transform: translateY(80px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h2 style="text-align:center;">🔐 Login</h2>
+
+    <!-- Email Login -->
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="login()">Login</button>
+
+    <!-- Google Login -->
+    <button class="google" onclick="googleLogin()">Sign in with Google</button>
+
+    <!-- Phone OTP Login -->
+    <input type="tel" id="phone" placeholder="+91xxxxxxxxxx" />
+    <div id="recaptcha-container"></div>
+    <button class="otp-btn" onclick="sendOTP()">Send OTP</button>
+
+    <input type="text" id="otp" placeholder="Enter OTP" />
+    <button class="otp-btn" onclick="verifyOTP()">Verify OTP</button>
+
+    <div class="message" id="message"></div>
+    <a href="signup.html">Create Account</a>
+    <a href="forgot.html">Forgot Password?</a>
+  </div>
+
+  <script>
+   const firebaseConfig = {
+  apiKey: "AIzaSyDH06GmuMFz-ZNYWTwgnPAcodz6-_zDDIA",
+  authDomain: "financialdashboardanalysis.firebaseapp.com",
+  projectId: "financialdashboardanalysis",
+  storageBucket: "financialdashboardanalysis.firebasestorage.app",
+  messagingSenderId: "433992335630",
+  appId: "1:433992335630:web:8362255f9acd44b740175f"
+};
+    if (firebase.apps.length === 0) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("Login successful!");
+          window.location.href = "index.html";
+        })
+        .catch(err => {
+          document.getElementById("message").textContent = err.message;
+        });
+    }
+
+    // Google Sign-In
+function googleLogin() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider)
+    .then(result => {
+      alert("Logged in with Google!");
+      window.location.href = "index.html";  // or your dashboard
+    })
+    .catch(error => {
+      alert("Google Login Error: " + error.message);
+    });
+}
+
+// Phone Number OTP
+let confirmationResult;
+
+function sendOTP() {
+  const phoneNumber = document.getElementById("phone").value;
+
+  if (!phoneNumber) {
+    alert("Please enter your phone number.");
+    return;
+  }
+
+  const appVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+    size: 'invisible',
+    callback: function(response) {
+      // reCAPTCHA solved
+      console.log("reCAPTCHA solved");
+    }
+  });
+
+  firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+    .then((confirmation) => {
+      window.confirmationResult = confirmation;
+      alert("OTP sent to " + phoneNumber);
+    })
+    .catch((error) => {
+      console.error("SMS not sent", error);
+      alert("SMS not sent: " + error.message);
+    });
+}
+
+function verifyOTP() {
+  const otpCode = document.getElementById("otp").value;
+
+  if (!otpCode) {
+    alert("Please enter the OTP.");
+    return;
+  }
+
+  confirmationResult.confirm(otpCode)
+    .then((result) => {
+      alert("Phone login successful!");
+      window.location.href = "index.html";
+    })
+    .catch((error) => {
+      console.error("OTP Verification failed", error);
+      alert("Invalid OTP. Please try again.");
+    });
+}
+
+
+  </script>
+
+</body>
+</html>
+
