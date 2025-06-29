@@ -19,7 +19,7 @@ const firebaseConfig = {
   if (!user) return;
 
   try {
-    const res = await fetch(`https://financial-dashboard-y0nx.onrender.com/api/expenses?userId=${userId}`);
+    const res = await fetch(`https://financial-dashboard-y0nx.onrender.com/api/expenses?userId=${user.uid}`);
     const data = await res.json();
     expenses = data;
     console.log("📦 MongoDB Expenses Fetched →", expenses);
@@ -81,7 +81,7 @@ async function addExpense() {
   };
 
   try {
-    const response = await fetch("http://localhost:3000/api/expenses", {
+    const response = await fetch("https://financial-dashboard-y0nx.onrender.com", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(expense),
@@ -196,7 +196,7 @@ async function deleteExpense(index) {
   if (!confirmDelete) return;
 
   try {
-    const res = await fetch(`http://localhost:3000/api/expenses/${expense._id}`, {
+    const res = await fetch(`https://financial-dashboard-y0nx.onrender.com/api/expenses/${expense._id}`, {
       method: "DELETE"
     });
 
@@ -469,7 +469,7 @@ async function getTodaysExpensesFromMongoDB() {
 
   const today = new Date().toISOString().split("T")[0];
   try {
-    const response = await fetch(`http://localhost:3000/api/expenses?userId=${user.uid}`);
+    const response = await fetch(`https://financial-dashboard-y0nx.onrender.com/api/expenses?userId=${user.uid}`);
     const allExpenses = await response.json();
     const todayExpenses = allExpenses.filter(e => e.date === today);
 
@@ -485,7 +485,7 @@ async function fetchAllExpensesFromMongoDB() {
   if (!user) return [];
 
   try {
-    const res = await fetch(`http://localhost:3000/api/expenses?userId=${user.uid}`);
+    const res = await fetch(`https://financial-dashboard-y0nx.onrender.com/api/expenses?userId=${user.uid}`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -506,7 +506,7 @@ async function generateAndShowDailyInsight() {
   insightBox.textContent = "⏳ Generating insight...";
 
   try {
-    const response = await fetch("http://localhost:3000/generate-insight", {
+    const response = await fetch("https://financial-dashboard-y0nx.onrender.com/generate-insight", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: user.uid, username: user.displayName || user.email || "User" })
@@ -533,7 +533,7 @@ console.log("🧾 Sending userId:", firebase.auth().currentUser?.uid);
 
 
 async function addExpenseToDB(expense) {
-  await fetch("http://localhost:3000/api/expenses", {
+  await fetch("https://financial-dashboard-y0nx.onrender.com/api/expenses", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
