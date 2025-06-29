@@ -1,4 +1,8 @@
 // Initialize Firebase
+const apiUrl = process.env.REACT_APP_API_URL;
+
+fetch(`${apiUrl}/api/expenses`)
+
 const firebaseConfig = {
       apiKey: "AIzaSyDH06GmuMFz-ZNYWTwgnPAcodz6-_zDDIA",
       authDomain: "financialdashboardanalysis.firebaseapp.com",
