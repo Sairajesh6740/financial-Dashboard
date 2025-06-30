@@ -17,8 +17,14 @@
 
 ## 📸 Screenshots
 
-![Dashboard Screenshot]([https://your-screenshot-url.png](https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/Dashboard-1.png))
-*Add real screenshots of your deployed dashboard UI, insights section, and charts here for visual impact.*
+<img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/Dashboard-1.png" width="600" />
+<img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/Insight%20Generation.png" width="600" />
+<img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/dashboard-%20ss3.png" width="600" />
+<img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/dashboard-Nightmode.png" width="600" />
+<img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/dashboard-ss2.png" width="600" />
+
+
+
 
 ---
 
