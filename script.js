@@ -196,7 +196,7 @@ async function deleteExpense(index) {
   if (!confirmDelete) return;
 
   try {
-    const res = await fetch(`https://financial-dashboard-y0nx.onrender.com/api/expenses${expense._id}`, {
+    const res = await fetch(`https://financial-dashboard-y0nx.onrender.com/api/expenses/${expense._id}`, {
       method: "DELETE"
     });
 
