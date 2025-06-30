@@ -16,12 +16,13 @@
 ---
 
 ## 📸 Screenshots
-
-<img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/Dashboard-1.png" width="600" />
-<img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/Insight%20Generation.png" width="600" />
-<img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/dashboard-%20ss3.png" width="600" />
-<img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/dashboard-Nightmode.png" width="600" />
-<img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/dashboard-ss2.png" width="600" />
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+  <img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/Dashboard-1.png?raw=true" width="300" />
+  <img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/Insight%20Generation.png?raw=true" width="400" />
+  <img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/dashboard-%20ss3.png?raw=true" width="300" />
+  <img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/dashboard-Nightmode.png?raw=true" width="300" />
+  <img src="https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/dashboard-ss2.png?raw=true" width="300" />
+</div>
 
 
 
@@ -82,18 +83,8 @@ Personalized greeting (using username/email)
 
 Summary of top categories
 
-Smart money-saving suggestion
+Smart money-saving💸 suggestion
 
-🗺️ Roadmap Ideas (Optional)
-🔔 Email Daily Insights using Firebase Functions
-
-📱 Make it PWA (Progressive Web App)
-
-📈 Add Income & Savings Tracking Graphs
-
-🔒 Role-based admin view for analytics
-
-🌍 Add multi-language support
 
 👤 Author
 Sairajeshreddy Narra
