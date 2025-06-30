@@ -17,7 +17,7 @@
 
 ## 📸 Screenshots
 
-![Dashboard Screenshot](https://your-screenshot-url.png)
+![Dashboard Screenshot]([https://your-screenshot-url.png](https://github.com/Sairajesh6740/financial-Dashboard/blob/main/screenshots/Dashboard-1.png))
 *Add real screenshots of your deployed dashboard UI, insights section, and charts here for visual impact.*
 
 ---
