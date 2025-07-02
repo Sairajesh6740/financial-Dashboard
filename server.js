@@ -9,13 +9,13 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: "https://financial-dashboard-six-iota.vercel.app", // ✅ your Vercel domain
+  origin: "https://financial-dashboard-git-main-sairajeshs-projects.vercel.app", // ✅ your Vercel domain
   credentials: true
 }));
 app.use(express.json());
 
-// ✅ Connect to MongoDB**mongodb+srv://rajesh:rajesh%40123@expenses.fgkd1jt.mongodb.net/expensesDB?retryWrites=true&w=majority&appName=expenses
-mongoose.connect("process.env.MONGO_URI ", {
+// ✅ Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
