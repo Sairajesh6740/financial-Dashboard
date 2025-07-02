@@ -196,20 +196,20 @@ async function deleteExpense(index) {
   if (!confirmDelete) return;
 
   try {
-    const res = await fetch(`https://financial-dashboard-y0nx.onrender.com/api/expenses${expense._id}`, {
+    const res = await fetch(`https://financial-dashboard-y0nx.onrender.com/api/expenses/${expense._id}`, {
       method: "DELETE"
     });
 
     const data = await res.json();
     alert(data.message || "Expense deleted");
 
-    // 🟢 Re-fetch latest data from MongoDB
-    await fetchExpensesFromMongoDB();  // << MOST IMPORTANT
+    await fetchExpensesFromMongoDB(); // Refresh the list
   } catch (err) {
     console.error("❌ Delete failed:", err);
     alert("❌ Failed to delete expense.");
   }
 }
+
 
 
 function filterExpenses() {
