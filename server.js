@@ -3,6 +3,9 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import { OpenAI } from "openai";
+import dotenv from "dotenv";
+dotenv.config();
+
 
 const app = express();
 app.use(cors({
@@ -11,8 +14,8 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// ✅ Connect to MongoDB
-mongoose.connect("mongodb+srv://rajesh:rajesh%40123@expenses.fgkd1jt.mongodb.net/expensesDB?retryWrites=true&w=majority&appName=expenses", {
+// ✅ Connect to MongoDB**mongodb+srv://rajesh:rajesh%40123@expenses.fgkd1jt.mongodb.net/expensesDB?retryWrites=true&w=majority&appName=expenses
+mongoose.connect("process.env.MONGO_URI ", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
@@ -34,7 +37,7 @@ const Expense = mongoose.model("Expense", expenseSchema);
 
 // ✅ Groq (OpenAI-compatible) setup
 const openai = new OpenAI({
-  apiKey: "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", // 🟢 Your actual Groq API key
+  apiKey: process.env.GROQ_API_KEY, // 🟢 Your actual Groq API key
   baseURL: "https://api.groq.com/openai/v1"         // 🟢 Required for Groq to mimic OpenAI
 });
 // ✅ Prompt builder
