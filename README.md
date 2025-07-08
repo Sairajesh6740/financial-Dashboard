@@ -10,7 +10,7 @@
 
 ## 🔗 Live Demo
 
-🌐 [Visit the App](https://financial-dashboard-six-iota.vercel.app)  
+🌐 [Visit the App](https://financial-dashboard-git-main-sairajeshs-projects.vercel.app/)  
 🔧 [Backend Render URL](https://financial-dashboard-y0nx.onrender.com)
 
 ---
